@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to right, #000000, #434343);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex direction changes the direction of flex from left to right to top to bottom - 'lives' displays above the cards */
+    flex-direction: column;
+
+}
+
+/* 4 rows and 4 columns 8 rem space */
+section{
+    display: grid;
+    grid-template-columns: repeat(4,8rem);
+    grid-template-rows: repeat(4,8rem);
+    grid-gap: 1rem;
+    perspective: 800px; /*flipping effect*/
+}
+
+.card {
+    position: relative;     /*puts the back of the card on the same place as the face of the card*/
+    transform-style: preserve-3d;   /*flipping effect*/
+    transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);  /*flippijng effect*/
+    box-shadow: rgba(0,0,0,0.2) 0px 5px 15px;       /*flipping effect*/ 
+}
+
+/* stops pictures from overflowing and puts them in the right size*/
+.face,
+.back {
+width: 100%;
+height: 100%;
+position: absolute;     /*puts the back of the card on the same place as the face of the card*/
+pointer-events: none;   /*checkCards function in JS. Stops selecting the element.*/
+}
+
+.back {
+    background-color: white;
+    backface-visibility: hidden;    /*flipping effect*/
+}
+
+.toggleCard {
+    transform: rotateY(180deg);     /*flipping effect*/
+}
